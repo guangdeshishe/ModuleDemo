@@ -27,7 +27,7 @@ android {
     sourceSets{
         main {
             if(isDebug){
-                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             }
