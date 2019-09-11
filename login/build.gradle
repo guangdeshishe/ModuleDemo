@@ -55,4 +55,8 @@ dependencies {
     testImplementation rootProject.ext.lib_junit
     androidTestImplementation rootProject.ext.lib_test_runner
     androidTestImplementation rootProject.ext.lib_test_espresso
+
+    implementation rootProject.ext.lib_rxjava
+    implementation rootProject.ext.lib_rxandroid
+    implementation rootProject.ext.lib_rxbinding
 }

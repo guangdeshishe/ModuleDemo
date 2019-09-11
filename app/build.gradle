@@ -37,6 +37,7 @@ dependencies {
 
     if(!isDebug.toBoolean()){
         implementation project(':home')
+        implementation project(':login')
     }
     implementation project(':core')
 }

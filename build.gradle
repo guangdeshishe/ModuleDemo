@@ -49,4 +49,8 @@ ext {
     lib_test_runner = "androidx.test:runner:1.1.1"
     lib_test_espresso = "androidx.test.espresso:espresso-core:3.1.1"
     lib_junit = "junit:junit:4.12"
+
+    lib_rxjava = 'io.reactivex.rxjava2:rxjava:2.2.3'
+    lib_rxandroid = 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    lib_rxbinding = 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 }
