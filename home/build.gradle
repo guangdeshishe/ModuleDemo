@@ -1,31 +1,53 @@
-apply plugin: 'com.android.application'
+if(isDebug.toBoolean()){
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+
+
     defaultConfig {
-        applicationId "com.agilezhu.moduledemo"
+        if(isDebug.toBoolean()){
+            applicationId "com.example.home"
+        }
+
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    sourceSets{
+        main {
+            if(isDebug.toBoolean()){
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+//    resourcePrefix "home_"
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation rootProject.ext.lib_appcompat
     implementation rootProject.ext.lib_core_ktx
@@ -35,8 +57,5 @@ dependencies {
     androidTestImplementation rootProject.ext.lib_test_runner
     androidTestImplementation rootProject.ext.lib_test_espresso
 
-    if(!isDebug.toBoolean()){
-        implementation project(':home')
-    }
     implementation project(':core')
 }

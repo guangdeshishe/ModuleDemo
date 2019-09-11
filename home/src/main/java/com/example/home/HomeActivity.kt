@@ -1,12 +1,12 @@
-package com.agilezhu.moduledemo
+package com.example.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.app_activity_main)
+        setContentView(R.layout.home_activity_main)
     }
 }
