@@ -58,21 +58,5 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation rootProject.ext.lib_appcompat
-    implementation rootProject.ext.lib_core_ktx
-    implementation rootProject.ext.lib_appcompat
-    implementation rootProject.ext.lib_constraintlayout
     implementation project(':core')
-    testImplementation rootProject.ext.lib_junit
-    androidTestImplementation rootProject.ext.lib_test_runner
-    androidTestImplementation rootProject.ext.lib_test_espresso
-
-    implementation rootProject.ext.lib_rxjava
-    implementation rootProject.ext.lib_rxandroid
-    implementation rootProject.ext.lib_rxbinding
-
-    implementation rootProject.ext.lib_arouter_api
-    kapt rootProject.ext.lib_arouter_compiler
 }

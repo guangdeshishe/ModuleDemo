@@ -16,6 +16,6 @@ class MainActivity : BaseActivity() {
             .withString("message", "欢迎使用")
             .navigation()
 
-//        finish()
+        finish()
     }
 }
