@@ -3,6 +3,7 @@ package com.example.home
 import android.os.Bundle
 import com.agilezhu.core.base.BaseActivity
 import com.agilezhu.core.config.RouterPath
+import com.agilezhu.core.service.ServiceManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.jakewharton.rxbinding2.view.RxView
@@ -20,9 +21,13 @@ class HomeActivity : BaseActivity() {
             showToast(message)
         }
 
-        addDisposable(RxView.clicks(mHomeLoginButton)
-            .subscribe {
-                ARouter.getInstance().build(RouterPath.LOGIN_LOGIN_ACTIVITY).navigation()
-            })
+        if (ServiceManager.getInstance().loginService.isLogin()) {
+            mHomeLoginButton.text = "已登录"
+        } else {//未登录
+            addDisposable(RxView.clicks(mHomeLoginButton)
+                .subscribe {
+                    ARouter.getInstance().build(RouterPath.LOGIN_LOGIN_ACTIVITY).navigation()
+                })
+        }
     }
 }
