@@ -6,6 +6,12 @@ if(isDebug.toBoolean()){
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -22,6 +28,14 @@ android {
         versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        /* ARouter的配置*/
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
     }
 
     sourceSets{
@@ -62,4 +76,7 @@ dependencies {
     implementation rootProject.ext.lib_rxjava
     implementation rootProject.ext.lib_rxandroid
     implementation rootProject.ext.lib_rxbinding
+
+    implementation rootProject.ext.lib_arouter_api
+    kapt rootProject.ext.lib_arouter_compiler
 }

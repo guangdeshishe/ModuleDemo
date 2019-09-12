@@ -3,6 +3,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -40,4 +47,7 @@ dependencies {
         implementation project(':login')
     }
     implementation project(':core')
+
+    implementation rootProject.ext.lib_arouter_api
+    kapt rootProject.ext.lib_arouter_compiler
 }

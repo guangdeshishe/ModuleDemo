@@ -1,8 +1,9 @@
 package com.agilezhu.moduledemo
 
 import android.app.Application
-
-//import com.example.home.HomeApplication
+import com.agilezhu.core.base.BaseApplication
+import com.agilezhu.core.config.ApplicationConfig
+import com.alibaba.android.arouter.launcher.ARouter
 
 /**
  * TODO 请添加说明
@@ -11,9 +12,13 @@ import android.app.Application
  * @date 2019-09-11
  * @time 10:08
  */
-class AppApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
-//        HomeApplication.init(this)
+class AppApplication : BaseApplication() {
+
+    override fun init(application: Application) {
+        ARouter.openLog()    // 打印日志
+        ARouter.openDebug()
+        ARouter.init(this)
+
+        ApplicationConfig.init(this)
     }
 }
